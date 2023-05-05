@@ -10,7 +10,7 @@ using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 
 
-class Program 
+class Program
 {
     static void Main(string[] args) => new Program().RunBotAsync().GetAwaiter().GetResult();
 
@@ -20,7 +20,12 @@ class Program
 
     public async Task RunBotAsync()
     {
-        _client = new DiscordSocketClient();
+        var configuracoes = new DiscordSocketConfig()
+        {
+            GatewayIntents = GatewayIntents.All
+        };
+
+        _client = new DiscordSocketClient(configuracoes);
         _commands = new CommandService();
 
         _serviceProvider = new ServiceCollection()
@@ -28,7 +33,7 @@ class Program
             .AddSingleton(_commands)
             .BuildServiceProvider();
 
-        string token = "exemplo";
+        string token = "MTEwMzg2NDc0NjE5NDc4MDIwMA.GNAS0_.255x4g65Jl_WJv4ipXjQhyuxYSAoCm39luNhQc";
         _client.Log += _client_Log;
 
         await RegisterCommandsAsync();
