@@ -33,7 +33,7 @@ class Program
             .AddSingleton(_commands)
             .BuildServiceProvider();
 
-        string token = "MTEwMzg2NDc0NjE5NDc4MDIwMA.GNAS0_.255x4g65Jl_WJv4ipXjQhyuxYSAoCm39luNhQc";
+        string token = "exemplo_token";
         _client.Log += _client_Log;
 
         await RegisterCommandsAsync();
